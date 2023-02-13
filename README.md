@@ -1,10 +1,10 @@
 <center>
 
-# ”YOU ARE BUSTED”
-# Arduino Alarm via Blynk
-</center>
+# **”YOU ARE BUSTED” Arduino Alarm via Blynk**
 
-## Project Description
+## **Project Description**
+
+</center>
 
 In the overall project, we are going to create a movement monitoring system or alarm system. This monitor system can be used for example as a “anti-thef system”. Our Device A will be controlling the proximity sensor and measure the distance of the objects that can go in front of it. 
 
@@ -13,8 +13,11 @@ Device A will be serving as a monitoring system which will raise an alarm if som
 As a messaging platform will be used Blynk system: (https://blynk.io)
 
 ![alt text](./Assets/Blynk.jpg?raw=true)
+<center>
 
-## How Blynk Works
+## **How Blynk Works**
+</center>
+
 
 Blynk was designed for the Internet of Things. It can control hardware remotely, it can display sensor data, it can store data, visualize it and do many other cool things.
 
@@ -31,8 +34,10 @@ Now imagine: every time you press a Button in the Blynk app, the message travels
 ![alt text](./Assets/BlynkConnection.png?raw=true)
 
 Here, you can find all the needed information with more detail: https://docs.blynk.cc/
+<center>
 
-## Components
+## **Components**
+</center>
 
 | Hardware  | Quantity | Description | Image |
 |:---------------|:---------------:|:-----|:---:|
@@ -44,8 +49,10 @@ Here, you can find all the needed information with more detail: https://docs.bly
 |Cable MINI USB for Arduino|1|Used for uploading code to the Arduinos. It is used only during development. Then power supply can be used.|![alt text](./Assets/usbCable.png?raw=true)|
 |Jumper Wires (generic) Male to Male|9|Different length|![alt text](./Assets/wires.png?raw=true)|
 |9V Power Adapter|2|Use power adapter to locate your Arduino in any location without need connecting to your computer. Alternatively  battery based power supply can be used.|![alt text](./Assets/power.png?raw=true)|
+<center>
 
-## 	APPS and Online Services
+## 	**APPS and Online Services**
+</center>
 
 | Application  | Comment |
 |:--------------:|:---------------|
@@ -53,8 +60,10 @@ Here, you can find all the needed information with more detail: https://docs.bly
 |<img src="./Assets/Blynk_logo.png"  width="150" height="50" />|Blynk is a hardware-agnostic IoT platform with white-label mobile apps, private clouds, device management, data analytics, and machine learning. Mobile App installation is strongly recommended.|
 |<img src="./Assets/tinkercad.png"  width="150" height="120" />|Plan your circuit online|
 |<img src="./Assets/fritzing.png"  width="200" height="50" />|Alternative to Tinkercad for circuit virtual planning and testing. Plan your circuit offline.|
+<center>
 
-## Blynk Installation
+## **Blynk Installation**
+</center>
 
 Download **Blynk IoT** NEW App in Appstore or Google Play
 
@@ -71,3 +80,225 @@ Account is needed to save your projects and provide access from any smartphone y
 ☝️After account creation you will receive an email with very useful links to start with.
 
 ☝️Blynk user guides for beginners can be found here: https://docs.blynk.cc/#getting-started
+<center>
+
+## **Blynk Application: Create templates**
+</center>
+
+To create our project we now need to create templates. For that, on Blynk app do the following steps : 
+
+<img src="./Assets/Temp1.jpg"  width="200" height="400" />
+<img src="./Assets/Temp2.jpg"  width="200" height="400" />
+<img src="./Assets/Temp3.jpg"  width="200" height="400" />
+<img src="./Assets/Temp4.jpg"  width="200" height="400" />
+
+Do the same manipuation again for a second template named Lamp. You should arrive at this point :
+
+<img src="./Assets/Temp5.jpg"  width="200" height="400" />
+
+<center>
+
+## **Blynk Application: Create and setup the first device**
+</center>
+
+Now that all the templates that we will need are created it is time add our frist device, like before follow those steps :
+
+<img src="./Assets/App0.jpg"  width="200" height="400" />
+<img src="./Assets/App1.jpg"  width="200" height="400" />
+<img src="./Assets/App2.jpg"  width="200" height="400" />
+<img src="./Assets/App3.jpg"  width="200" height="400" />
+
+Let’s add Display widget in our Blynk Application. This will serve us as simple value display on our mobile app. This can be used also for testing any value display from our Arduino device and for automations.
+
+<img src="./Assets/App4.jpg"  width="200" height="400" />
+<img src="./Assets/App5.jpg"  width="200" height="400" />
+<img src="./Assets/App6.jpg"  width="200" height="400" />
+<img src="./Assets/App7.jpg"  width="200" height="400" />
+<img src="./Assets/App8.jpg"  width="200" height="400" />
+<img src="./Assets/App9.jpg"  width="200" height="400" />
+<img src="./Assets/App10.jpg"  width="200" height="400" />
+<img src="./Assets/App11.jpg"  width="200" height="400" />
+<img src="./Assets/App12.jpg"  width="200" height="400" />
+<img src="./Assets/App13.jpg"  width="200" height="400" />
+
+As you had seen many type of data stream are available. Here we choose one that can transfer double (number between 0 and 255) to send the distance detected by the ultrasonic sensor in cm. For now nothing is display because this virtual device is not connected to the real device.
+
+<center>
+
+## **Physical Assembly Device A: Ultrasonic Sensor**
+</center>
+
+We need to build following circuit, see below image.
+
+Here is the circuit diagram made using https://www.tinkercad.com. You can also do the same using Fritzing.org. It's free and accessible to all skill levels.
+
+<img src="./Assets/DeviceASim.png"  width="800" height="400"/>
+
+Here you can see the same circuit in real life.
+
+<img src="./Assets/DeviceAReal.png" width="600" height="400"/>
+<center>
+
+## **Arduino account, Arduino Create Agent and Arduino IDE**
+</center>
+
+Go To https://www.arduino.cc and create an account.
+
+Install Arduino Create Agent here: https://create.arduino.cc/getting-started/plugin/welcome
+
+We need this agent for being able to connect to our device. 
+
+Full manual for this agent installation can be found here: https://support.arduino.cc/hc/en-us/articles/360014869820-How-to-install-the-Arduino-Create-Agent
+
+You will have in the upper part of the computer the Arduino Create Agent. Check is can connect.
+ 
+You then download the IDE. Install the Arduino IDE:
+* Download the latest version from: https://www.arduino.cc/en/Main/Software
+* Tutorial: https://aprendiendoarduino.wordpress.com/2018/04/03/instalacion-software-arduino-2/
+
+After installation, open the IDE, you should arrive in this windows :
+
+<img src="./Assets/ArduinoIDE1.png" width="800" height="550"/>
+
+This window will be where we write the code that will be executed on our arduino.
+
+Now make sure that your board is connected to the computer by configuring that: 
+
+<img src="./Assets/ArduinoIDE2.png" width="500" height="50"/>
+
+<center>
+
+## **Device A (ultrasonic sensor) program development, upload and testing**
+</center>
+
+Now we are ready to move our code to Arduino using the IDE.
+
+In the IDE you will have a default sketch open. Sketch is nothing else as a document or file. By default, sketch has 2 main procedures: setup and loop.
+
+Setup is a so-called preparation block and Loop is so called execution block. These are 2 obligatory blocks which you cannot delete, but we can and should modify them. 
+
+In addition, we can add more blocks, procedures, functions, declarations. Here is some useful reference document for Arduino programming: https://www.arduino.cc/reference/en/
+You can find tons of good material in internet related to Arduino programming.
+
+So, let’s now develop our program and copy it to our newly created sketch. 
+
+In our code we will need to do following things:
+* Add required libraries
+* Add handling for Ultrasonic Sensor
+* Connect to Wifi
+* Connect to Blynk service
+* Send data to Blynk using Virtual Pin5 	
+
+Below is the code, which you can just copy and paste to your sketch. You just overwrite whatever it was there in the default sketch.
+
+> **_NOTE:_**  You have to replace the 3 firsts define by yours ! You can find them on https://blynk.cloud/ by logging in with the same credentials than on the app, going in the device and then in Device Info. You also have to modify the wifi credential by your own.
+
+``` c++
+/*----------------------------------------------------*/
+// This program aims to:
+// -Add handling for Ultrasonic Sensor
+// -Connect to Wifi
+// -Connect to Blynk
+// -Send data to Blynk using Virtual Pin5 
+//
+// MODIFICATION HISTORY
+// Person Date Comments
+// --------- ------ ---------------------
+// Pilar Martin 01/03/2021 Created new
+// Billequin Thomas 13/02/2023 Refactor for Blynk update now the logic is handle using automatisation on Blynk
+// 
+/*----------------------------------------------------*/
+#define BLYNK_TEMPLATE_ID ""
+#define BLYNK_TEMPLATE_NAME ""
+#define BLYNK_AUTH_TOKEN ""
+
+/* Comment this out to disable prints and save space */
+#define BLYNK_PRINT Serial
+#define BLYNK_MAX_SENDBYTES 1000 // this is to override default max message size
+
+// Include required libraries
+#include <Blynk.h>
+#include <SPI.h>
+#include <WiFi.h>
+#include <BlynkSimpleWifi.h>
+
+// define digital pins for the Ultrasonic Sensor
+#define trigPin 7
+#define echoPin 6
+
+// Your WiFi credentials.
+// Set password to "" for open networks.
+char ssid[] = "";
+char pass[] = "";
+
+// Timer for blynking
+BlynkTimer timer;
+
+// This custom function sends Arduino's up time every second to Virtual Pin (5).
+// In the app, Widget's reading frequency should be set to PUSH. This means
+// that you define how often to send data to Blynk App.
+void sendSensor()
+{
+ long durationindigit, distanceincm;
+ 
+ // processing Ultrasonic Data and calculating the distance
+ digitalWrite(trigPin, LOW);
+ delayMicroseconds(2);
+ digitalWrite(trigPin, HIGH);
+ delayMicroseconds(10);
+ digitalWrite(trigPin, LOW);
+ durationindigit = pulseIn(echoPin, HIGH);
+ //distanceincm = (durationindigit * 0.034) / 2;
+ distanceincm = (durationindigit/2) / 29.1;
+ 
+ // checking if any value is retrieved
+ // printing results to the serial port output (for debugging, can be commented out later)
+ if (isnan(distanceincm)) {
+
+  Serial.println("Failed to read from sensor!");
+  return;
+
+ } else {
+ 
+ Serial.print(distanceincm);
+ Serial.println(" cm");
+ 
+ // Lets send value to Blynk
+ // You can send any value at any time.
+ // Please don't send more that 10 values per second.
+ Blynk.virtualWrite(V5, distanceincm);
+ }
+}
+
+void setup()
+{
+ // Debug console
+ Serial.begin(9600);
+ Blynk.begin(BLYNK_AUTH_TOKEN, ssid, pass);
+ // You can also specify server:
+ //Blynk.begin(auth, ssid, pass, "blynk-cloud.com", 80);
+ //Blynk.begin(auth, ssid, pass, IPAddress(192,168,1,100), 8080);
+ 
+ while (Blynk.connect() == false) {
+ // Wait until Blynk is connected
+ }
+ 
+ pinMode(trigPin, OUTPUT);
+ pinMode(echoPin, INPUT);
+ 
+ // Setup a function to be called every second
+ timer.setInterval(1000L, sendSensor);
+ 
+}
+void loop()
+{
+ Blynk.run();
+ // You can inject your own code or combine it with other sketches.
+ // Check other examples on how to communicate with Blynk. Remember
+ // to avoid delay() function!
+ timer.run();
+ 
+}
+```
+
+After copying your code to the sketch in Arduino Web Editor you can save your sketch and Verify the code by pressing < Verify and Save > button. 
