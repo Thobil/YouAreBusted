@@ -108,7 +108,7 @@ Now that all the templates that we will need are created it is time add our fris
 <img src="./Assets/App2.jpg"  width="200" height="400" />
 <img src="./Assets/App3.jpg"  width="200" height="400" />
 
-Let’s add Display widget in our Blynk Application. This will serve us as simple value display on our mobile app. This can be used also for testing any value display from our Arduino device and for automations.
+Let’s add Display widget in our Blynk Application. This will serve us as simple value display on our mobile app. This can be used also for testing any value display from our Arduino device and/or for automations.
 
 <img src="./Assets/App4.jpg"  width="200" height="400" />
 <img src="./Assets/App5.jpg"  width="200" height="400" />
@@ -162,7 +162,7 @@ After installation, open the IDE, you should arrive in this windows :
 
 This window will be where we write the code that will be executed on our arduino.
 
-Now make sure that your board is connected to the computer by configuring that: 
+Now make sure that your board is connected to the computer by configuring it so that you get to this display on the IDE: 
 
 <img src="./Assets/ArduinoIDE2.png" width="500" height="50"/>
 
@@ -302,3 +302,164 @@ void loop()
 ```
 
 After copying your code to the sketch in Arduino Web Editor you can save your sketch and Verify the code by pressing < Verify and Save > button. 
+> **_NOTE 1 :_** If some error pop saying that librairies are missing, install them using the librairie manager of the IDE.  
+
+
+> **_NOTE 2 :_**  If you get the error “atoll” was not declared in this scope you have 2 choices :
+> * Modify the file of the librairie directly on your computer to fix the issue by replacing atoll to atol in the given file.
+> * Change the version of Blynk librairie to version 0.6.1.
+
+If you don't get any error you can now send your program on the arduino by simply clicking on the < Upload > button next to the previous one. Now to visualize what is happening open the serial monitor (Tools > Serial Monitor). After some time (could take 1 or 2 minutes for the first connection), if everything work well you should see this :
+
+<img src="./Assets/resultSensorIDE.png" width="500" height="400"/>
+
+> **_NOTE :_** If nothing happenend verify take the internet network where you want to connect the device is working.
+
+You can now disconnect the device from the computer and connect it using the power adapter.
+
+<center>
+
+## **Now device B**
+</center>
+
+Now like with the sensor we will add the lamp device on Blynk, don't forget to use the lamp template that we create before ! 
+
+<img src="./Assets/App16.jpg"  width="200" height="400" />
+<img src="./Assets/App15.jpg"  width="200" height="400" />
+
+You now have your 2 devices on the app.
+
+<img src="./Assets/App17.jpg"  width="200" height="400" />
+
+We need to build following circuit, see image below (created using: https://www.tinkercad.com/). Remember the small leg of the led is going to the GND.
+
+
+<img src="./Assets/DeviceBSim.png"  width="800" height="400"/>
+
+Here you can see the same circuit in real life.
+
+<img src="./Assets/DeviceBReal.png" width="600" height="400"/>
+
+
+Now you can go on  https://blynk.cloud/  to get its token, id and name that we will used in our program. Don't forget to put credentials of the network too.
+
+``` c++
+/*----------------------------------------------------*/
+// This program aims to:
+// - Add handling for Led Lamp
+// - Connect to Wifi
+// - Connect to Blynk
+// - Receive data from Blynk 
+//
+// MODIFICATION HISTORY
+// Person Date Comments
+// --------- ------ ---------------------
+// Pilar Martin 01/03/2021 Created new
+// Billequin Thomas 13/02/2023 Refactor for Blynk update now the logic is handle using automatisation on Blynk
+// 
+/*----------------------------------------------------*/
+#define BLYNK_TEMPLATE_ID ""
+#define BLYNK_TEMPLATE_NAME ""
+#define BLYNK_AUTH_TOKEN ""
+
+/* Comment this out to disable prints and save space */
+#define BLYNK_PRINT Serial
+#define PIN 10
+
+#include <Blynk.h>
+#include <SPI.h>
+#include <WiFi.h>
+#include <BlynkSimpleWifi.h>
+// You should get Auth Token in the Blynk App.
+// Go to the Project Settings (nut icon).
+// Your WiFi credentials.
+// Set password to "" for open networks.
+char ssid[] = "";
+char pass[] = "";
+void setup ()
+{
+ // Debug console
+ Serial.begin(9600);
+ 
+ pinMode (PIN, OUTPUT); // Initialization of the LED output pin
+ 
+ Blynk.begin(BLYNK_AUTH_TOKEN, ssid, pass);
+ // You can also specify server:
+ //Blynk.begin(auth, ssid, pass, "blynk-cloud.com", 80);
+ //Blynk.begin(auth, ssid, pass, IPAddress(192,168,1,100), 8080);
+}
+void loop () // main program loop
+{
+  Blynk.run();
+ // You can inject your own code or combine it with other sketches.
+ // Check other examples on how to communicate with Blynk. Remember
+ // to avoid delay() function!
+}
+
+//Is called every time Virtual Pin 5 of Blynk is updated
+BLYNK_WRITE(V5){
+  //read the value of the virtual pin
+  if(param.asInt() > 128)
+  {
+    // execute this code if the switch widget is now ON
+    Serial.println("on");
+    digitalWrite(PIN,HIGH);  // Set digital pin HIGH
+  }
+  else
+  {
+    // execute this code if the switch widget is now OFF
+    Serial.println("off");
+    digitalWrite(PIN,LOW);  // Set digital pin LOW    
+  }
+}
+```
+
+You can now like before verify the code and then upload it on the device. When it's done nothing should happened on the IDE but you can see if it connect to Blynk if the device is not marked a **Offline** on the app.
+
+Now to start to comminicate with this device we can use widget. Here we will add a button to control the light :
+
+<img src="./Assets/App17.jpg"  width="200" height="400" />
+<img src="./Assets/App18.jpg"  width="200" height="400" />
+<img src="./Assets/App19.jpg"  width="200" height="400" />
+<img src="./Assets/App20.jpg"  width="200" height="400" />
+<img src="./Assets/App21.jpg"  width="200" height="400" />
+<img src="./Assets/App22.jpg"  width="200" height="400" />
+
+You should now be able to controle the light of your device using the widget button.
+
+<center>
+
+## **Automations**
+</center>
+
+Now that we setup both of our devices we need to make them communicate through the IOT platform using in that case Automations. Here you can find the documentation :
+*  https://docs.blynk.io/en/concepts/automations
+
+To enable automation go on https://blynk.cloud/ -> Template section -> Sensor template -> Automations -> Edit. You should arrive on that page :
+
+<img src="./Assets/auto1.png"  width="1000" height="500" />
+
+Now enable condition and action for V5. It's where we write the data of the sensor. Save and reload the page and the app. Do the exact same for the other template. You can now see Automation on both of them, but we will focus on the app : 
+
+
+<img src="./Assets/auto2.jpg"  width="200" height="400" />
+<img src="./Assets/auto3.jpg"  width="200" height="400" />
+<img src="./Assets/auto4.jpg"  width="200" height="400" />
+<img src="./Assets/auto5.jpg"  width="200" height="400" />
+<img src="./Assets/auto6.jpg"  width="200" height="400" />
+<img src="./Assets/auto7.jpg"  width="200" height="400" />
+<img src="./Assets/auto8.jpg"  width="200" height="400" />
+<img src="./Assets/auto9.jpg"  width="200" height="400" />
+<img src="./Assets/auto10.jpg"  width="200" height="400" />
+<img src="./Assets/auto11.jpg"  width="200" height="400" />
+<img src="./Assets/auto12.jpg"  width="200" height="400" />
+<img src="./Assets/auto13.jpg"  width="200" height="400" />
+<img src="./Assets/auto14.jpg"  width="200" height="400" />
+
+You now have create a automation that switch on the light when you are close enough of the sensor but it never switch off ! We will now resolve this problem with another automation : 
+
+<img src="./Assets/auto15.jpg"  width="200" height="400" />
+
+Now both of your automations are done ! You should see something like that :
+
+<img src="./Assets/auto16.jpg"  width="200" height="400" />
