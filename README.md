@@ -463,3 +463,33 @@ You now have create a automation that switch on the light when you are close eno
 Now both of your automations are done ! You should see something like that :
 
 <img src="./Assets/auto16.jpg"  width="200" height="400" />
+
+<center>
+
+## **Notifications**
+</center>
+
+With automations you can also send notifications or e-mail as you can see here :
+
+<img src="./Assets/auto10.jpg"  width="200" height="400" />
+
+So now modify your automations so it send an e-mail and a notification when the sensor is tringered.
+
+<center>
+
+## **ADDING EXTRA**
+</center>
+
+You will create a program that will be reading information from the ultrasonic distance sensor continuously. Depending on the distance measured by the sensor, one LED or another will light up.
+
+To do this you will use a condition: if the distance is less than 20 cm, the red LED will be on while the green one will be off. On the contrary, if the distance is greater than 20 cm, the green LED will be on and the red LED will be off.
+
+To measure the distance you will have to define the TRIG pin as an output and the ECHO as an input. The TRIG pin will be in charge of sending the ultrasound signal forward, and the ECHO pin will be in charge of waiting to receive the signal.
+
+Depending on the time elapsed between the moment the signal has been sent and received, it can be known how far away the object is, since the speed of sound in air is always 343.3 m/s.
+
+So if you know the total time, which is how long it takes to get from the sensor to the bounced object and from the bounced object to the sensor, you can know the distance. To do this, you simply multiply the time it takes to get from the sensor to the object (divide the total time by 2) by the speed of sound in air:
+
+Distance = speed * time/2
+
+Once the distance has been calculated, depending on its value, you will light one or the other LED. To do this you will define the 2 pins in which you connect the LEDs as output and, when you want it to be on, you will give it a high value (HIGH or 1) and when you want it to be off you will give it a low value (LOW or 0).
