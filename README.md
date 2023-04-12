@@ -315,14 +315,14 @@ If you don't get any error you can now send your program on the arduino by simpl
 
 > **_NOTE :_** If nothing happenend verify take the internet network where you want to connect the device is working.
 
-You can now disconnect the device from the computer and connect it using the power adapter.
+Values should also be seen on the app on the value display that you add previously. You can now disconnect the device from the computer and connect it using the power adapter.
 
 <center>
 
 ## **Now device B**
 </center>
 
-Now like with the sensor we will add the lamp device on Blynk, don't forget to use the lamp template that we create before ! 
+Now like with the sensor we will add the lamp device on Blynk, **don't forget to use the lamp template that we create before !**
 
 <img src="./Assets/App16.jpg"  width="200" height="400" />
 <img src="./Assets/App15.jpg"  width="200" height="400" />
@@ -439,7 +439,7 @@ To enable automation go on https://blynk.cloud/ -> Template section -> Sensor te
 
 <img src="./Assets/auto1.png"  width="1000" height="500" />
 
-Now enable condition and action for V5. It's where we write the data of the sensor. Save and reload the page and the app. Do the exact same for the other template. You can now see Automation on both of them, but we will focus on the app : 
+Now enable condition and action for V5. It's where we write the data of the sensor. Save and reload the page and the app. Do the exact same manipulations for the other template. You can now see Automation on both of them, but we will focus on the app : 
 
 
 <img src="./Assets/auto2.jpg"  width="200" height="400" />
@@ -447,9 +447,9 @@ Now enable condition and action for V5. It's where we write the data of the sens
 <img src="./Assets/auto4.jpg"  width="200" height="400" />
 <img src="./Assets/auto5.jpg"  width="200" height="400" />
 <img src="./Assets/auto6.jpg"  width="200" height="400" />
-<img src="./Assets/auto7.jpg"  width="200" height="400" />
-<img src="./Assets/auto8.jpg"  width="200" height="400" />
 <img src="./Assets/auto9.jpg"  width="200" height="400" />
+<img src="./Assets/auto8.jpg"  width="200" height="400" />
+<img src="./Assets/auto7.jpg"  width="200" height="400" />
 <img src="./Assets/auto10.jpg"  width="200" height="400" />
 <img src="./Assets/auto11.jpg"  width="200" height="400" />
 <img src="./Assets/auto12.jpg"  width="200" height="400" />
@@ -471,7 +471,7 @@ Now both of your automations are done ! You should see something like that :
 
 With automations you can also send notifications or e-mail as you can see here :
 
-<img src="./Assets/auto10.jpg"  width="200" height="400" />
+<img src="./Assets/auto17.jpg"  width="200" height="400" />
 
 So now modify your automations so it send an e-mail and a notification when the sensor is tringered.
 
